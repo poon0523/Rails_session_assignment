@@ -12,7 +12,7 @@ class User < ApplicationRecord
     # パスワードは6文字未満とし、「パスワードは6文字以上で入力してください」というエラーメッセージをつける
     validates :password,length: { minimum: 6, too_short: "パスワードは6文字以上で入力してください" }
     before_validation { email.downcase! }
-    has_many :tasks
+    has_many :tasks, dependent: :destroy
     
 
 end
